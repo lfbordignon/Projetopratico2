@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 
 import { Title, Nav, NavList, NavItem, NavLink } from './HeaderElements';
 
 function Header() {
-  let history = useHistory();
   const [actived, setActived] = useState('/');
   const [state, setState] = useState({
     activatedBase: true,
@@ -35,7 +33,6 @@ function Header() {
         activatedSocial,
         activatedCertificates,
       });
-      history.push(actived);
     }
   }, [actived]);
 

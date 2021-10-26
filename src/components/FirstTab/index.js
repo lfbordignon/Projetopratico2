@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 
 import {
   Form,
@@ -24,7 +23,6 @@ import {
 import { ChevronRight } from 'react-feather';
 
 const FirstTab = () => {
-  let history = useHistory();
   const [fullName, setName] = useState('');
   const [nickName, setNickname] = useState('');
   const [email, setEmail] = useState('');
