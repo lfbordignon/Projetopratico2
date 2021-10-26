@@ -1,0 +1,1 @@
+//Aproveitado elements de components base(base.js)
