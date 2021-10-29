@@ -1,75 +1,65 @@
+
 import React, { useEffect, useState } from 'react';
 
-import { Title, Nav, NavList, NavItem, NavLink } from './HeaderElements';
+import { Title, Nav, NavList, NavItem, NavLink } from './Header';
 
-function Header() {
-  const [actived, setActived] = useState('/');
+const Header = ({ page, setPage }) => {
   const [state, setState] = useState({
     activatedBase: true,
     activatedSocial: false,
     activatedCertificates: false,
   });
 
-  const changeForm = (activatedNav) => {
-    let activatedBase = activatedNav === 'b';
-    let activatedSocial = activatedNav === 's';
-    let activatedCertificates = activatedNav === 'c';
-    setState({
-      ...state,
-      activatedBase,
-      activatedSocial,
-      activatedCertificates,
-    });
-  };
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    if (!state.fetched) {
-      let activatedBase = actived === '/';
-      let activatedSocial = actived === '/social';
-      let activatedCertificates = actived === '/certificates';
+  const configUrl = (newUrl) => {
+    if (newUrl !== 3) {
+      show && setShow(!show);
+      let activatedBase = newUrl === 0;
+      let activatedSocial = newUrl === 1;
+      let activatedCertificates = newUrl === 2;
       setState({
         ...state,
         activatedBase,
         activatedSocial,
         activatedCertificates,
       });
+    } else {
+      setShow(!show);
     }
-  }, [actived]);
+  };
+
+  const changeForm = (activatedNav) => {
+    setPage(activatedNav);
+    configUrl(activatedNav);
+  };
+
+  useEffect(() => {
+    configUrl(page);
+  }, [page]);
 
   return (
     <header>
       <div>
         {' '}
         <div>
-          <Title>Team Sign Up</Title>
+          <Title>{show ? 'Registered Data' : 'Team Sign Up'}</Title>
         </div>
       </div>
-      <Nav>
+      <Nav show={show}>
         <NavList>
-          <NavItem activated={state.activatedBase}>
-            <NavLink
-              onClick={(e) => changeForm('b')}
-              to="/"
-              activated={state.activatedBase}
-            >
+          <NavItem activated={page === 0}>
+            <NavLink onClick={(e) => changeForm(0)} activated={page === 0}>
               Basic
             </NavLink>
           </NavItem>
-          <NavItem activated={state.activatedSocial}>
-            <NavLink
-              onClick={(e) => changeForm('s')}
-              to="/social"
-              activated={state.activatedSocial}
-            >
+          <NavItem activated={page === 1}>
+            <NavLink onClick={(e) => changeForm(1)} activated={page === 1}>
               Social
             </NavLink>
           </NavItem>
-          <NavItem activated={state.activatedCertificates}>
-            <NavLink
-              onClick={(e) => changeForm('c')}
-              to="/certificates"
-              activated={state.activatedCertificates}
-            >
+          <NavItem activated={page === 2}>
+            <NavLink onClick={(e) => changeForm(2)} activated={page === 2}>
               Certificates
             </NavLink>
           </NavItem>
@@ -77,6 +67,6 @@ function Header() {
       </Nav>
     </header>
   );
-}
+};
 
 export default Header;

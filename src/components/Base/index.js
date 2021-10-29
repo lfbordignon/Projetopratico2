@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const BodyBackground = styled.div`
   background: #eceef2;
+
   padding-top: 5%;
   padding-bottom: 5%;
   display: flex;
@@ -18,39 +19,14 @@ export const FormBackground = styled.div`
 `;
 
 
+
 export const Form = styled.form`
   height: 600px;
   position: relative;
   pointer-events: ${({ alert }) => alert && 'none'};
 `;
 
-export const LabelText = styled.label`
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  color: #767676;
-`;
-
-export const BoxInput = styled.div`
-  margin: 0px 0px 48px 0px;
-  width: 100%;
-`;
-
-export const InputText = styled.input`
-  background: #ffffff;
-  border: 2px solid #aaaaaa;
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 100%;
-  height: 45px;
-  text-indent: 10px;
-  display: block;
-  font-size: 17px;
-  font-family: 'Nunito', sans-serif;
-  margin: 4px 0 0 0;
-`;
-
-export const Button = styled.button.attrs({ type: 'submit' })`
+export const Cutton = styled.button.attrs({ type: 'submit' })`
   position: absolute;
   display: flex;
   font-family: 'Nunito', sans-serif;

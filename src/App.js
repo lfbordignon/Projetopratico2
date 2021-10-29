@@ -1,40 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { BodyBackground, FormBackground } from './assets/base';
-
+import React, { useState } from 'react';
+import { BodyBackground, FormBackground } from './components/Base';
 import Header from './components/Header';
-import FirstTab from './components/FirstTab';
-import SecondTab from './components/SecondTab';
-import ThirdTab from './components/ThirdTab';
+import FirstPage from './pages/firstPage';
+import SecondPage from './pages/secondPage';
+import ThirdPage from './pages/thirdPage';
+import FourthPage from './pages/fourthPage';
 
 const App = () => {
+  const [page, setPage] = useState(0);
+
   return (
-    <>
-      {
-        <Router>
-          <BodyBackground>
-            <FormBackground>
-              <Header />
-              <Switch>
-                <Route exact path="/">
-                  <FirstTab />
-                </Route>
-                <Route path="/social">
-                  <SecondTab />
-                </Route>
-                <Route path="/certificates">
-                  <ThirdTab />
-                </Route>
-                <Route path="/representation">
-                  <ThirdTab />
-                </Route>
-              </Switch>
-            </FormBackground>
-          </BodyBackground>
-        </Router>
-      }
-    </>
+    <BodyBackground>
+      <FormBackground>
+        <Header setPage={setPage} page={page} />
+
+        {page === 0 && <FirstPage setPage={setPage} />}
+        {page === 1 && <SecondPage setPage={setPage} />}
+        {page === 2 && <ThirdPage setPage={setPage} />}
+        {page === 3 && <FourthPage setPage={setPage} />}
+      </FormBackground>
+    </BodyBackground>
   );
 };
+
 export default App;
