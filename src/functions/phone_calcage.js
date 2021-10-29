@@ -11,7 +11,7 @@ export function phoneMask(e) {
 
 export function calcAge(day, month, year) {
   if (day && month && year) {
-    let dateString = `${day}/${month}/${year}`;
+    let dateString = `${year}/${month}/${day}`;
     let today = new Date();
     let birthDate = new Date(dateString);
     let age = today.getFullYear() - birthDate.getFullYear();
