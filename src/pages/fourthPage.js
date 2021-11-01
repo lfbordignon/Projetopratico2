@@ -1,15 +1,27 @@
-import React from 'react';
 
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../store/actions';
-import { Table, Th, Td, P } from '../components/Table/Table';
+
+import {
+  Table,
+  Th,
+  Td,
+  P,
+  TextContent,
+} from '../components/Table/Table';
+import {
+
+  HeartBox,
+} from '../components/Dropdown/Dropdown';
+
 import { Button } from '../components/Buttons/Button';
-import { ChevronRight } from 'react-feather';
+import { ChevronRight, Heart } from 'react-feather';
 
 const FourthPage = ({ infosForms, setPage, reset }) => {
   return (
-    <div style={{ position: 'relative', height: '600px' }}>
+    <div style={{ position: 'relative', height: '700px' }}>
       <Table>
         <thead>
           <tr>
@@ -21,7 +33,7 @@ const FourthPage = ({ infosForms, setPage, reset }) => {
           <tr>
             <Td>Full Name</Td>
             <Td>
-            <P>{infosForms.fullName}</P>
+              <P>{infosForms.fullName}</P>
             </Td>
           </tr>
           <tr>
@@ -63,7 +75,19 @@ const FourthPage = ({ infosForms, setPage, reset }) => {
           <tr>
             <Td>Cerficates</Td>
             <Td>
-              <P>{infosForms.certificates}</P>
+              {infosForms.certificateList.map((certificate, index) => {
+                return (
+                  <TextContent>
+                    <P>{certificate[0]}</P>
+                    <HeartBox>
+                      <Heart
+                        color={certificate[1] ? 'red' : 'white'}
+                        fill={certificate[1] ? 'red' : 'white'}
+                      />
+                    </HeartBox>
+                  </TextContent>
+                );
+              })}
             </Td>
           </tr>
           <tr>
