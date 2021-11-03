@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-
-
-// REDUX //
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../store/actions';

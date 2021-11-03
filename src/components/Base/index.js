@@ -18,8 +18,6 @@ export const FormBackground = styled.div`
   padding: 56px 50px;
 `;
 
-
-
 export const Form = styled.form`
   height: 600px;
   position: relative;
